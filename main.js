@@ -20,3 +20,12 @@ const firebaseConfig = {
   messagingSenderId: "579109661574",
   appId: "1:579109661574:web:4a7cd4060f70eded945a07"
 };
+
+// Inisialisasi Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+export async function ambilDaftarProduk() {
+  const refDokumen = collection(db, "produk");
+  const kueri = query(refDokumen, orderBy("nama"));
+  const cuplikanKueri = await getDocs(kueri);
