@@ -39,3 +39,18 @@
       let elemenDaftar = $("#daftar-produk > tbody");
       let daftarProduk = await ambilDaftarProduk();
       let nomor = 1;
+      
+      daftarProduk.forEach((data) => {
+        elemenDaftar.append(
+          '<tr>' +
+          '<th>' + nomor + '</th>' +
+          '<td>' + data.nama + '</td>' +
+          '<td>' + formatAngka(data.harga) + '</td>' +
+          '<td>' + data.stok + '</td>' +
+          '<td>' + '<button class="btn btn-danger tombol-hapus" data="' + data.id + '">Hapus</button>' + 
+          '<img src="loader.gif" style="width: 1em; display: none" id="' + data.id + '">' +
+          '</td>' +
+          '</tr>'
+        );
+        nomor = nomor + 1;
+      });
