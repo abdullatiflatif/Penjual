@@ -29,3 +29,20 @@ export async function ambilDaftarProduk() {
   const refDokumen = collection(db, "produk");
   const kueri = query(refDokumen, orderBy("nama"));
   const cuplikanKueri = await getDocs(kueri);
+
+let hasil = [];
+  cuplikanKueri.forEach((dok) => {
+    hasil.push({
+      id: dok.id,
+      nama: dok.data().nama,
+      harga: dok.data().harga,
+      stok: dok.data().stok,
+    });
+  });
+  
+  return hasil;
+}
+
+export function formatAngka(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
