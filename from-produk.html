@@ -30,3 +30,14 @@
     <button type="submit" class="btn btn-primary" id="tombol-tambah">Simpan</button>
     <img src="loader.gif" style="width: 2em; display: none" id="loader">
   </form>
+  
+  <a href="index.html">Lihat Daftar Produk</a>
+  
+  <script type="module">
+    import { tambahProduk } from './main.js';
+    
+    let tombolTambah = document.getElementById('tombol-tambah');
+    let elemenNamaProduk = document.getElementById('input-nama');
+    let elemenHarga = document.getElementById('input-harga');
+    let elemenStok = document.getElementById('input-stok');
+    let loader = document.getElementById('loader');
