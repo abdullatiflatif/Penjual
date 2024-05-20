@@ -13,12 +13,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDFYmmVvk-jLZIeAdYKiTwVw2jqd4VINFA",
-  authDomain: "insan-cemerlang.firebaseapp.com",
-  projectId: "insan-cemerlang",
-  storageBucket: "insan-cemerlang.appspot.com",
-  messagingSenderId: "579109661574",
-  appId: "1:579109661574:web:4a7cd4060f70eded945a07"
+  apiKey: "AIzaSyCdgAITXTldockRB_wgxOrbNUPKzSVBhDs",
+  authDomain: "insan-cemerlang-c9554.firebaseapp.com",
+  projectId: "insan-cemerlang-c9554",
+  storageBucket: "insan-cemerlang-c9554.appspot.com",
+  messagingSenderId: "753628555075",
+  appId: "1:753628555075:web:7a72b2d1e8ae89716931f6",
+  measurementId: "G-KMJZ5V0B8H"
 };
 
 // Inisialisasi Firebase
@@ -26,17 +27,17 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export async function ambilDaftarPenjual() {
-  const refDokumen = collection(db, "produk");
-  const kueri = query(refDokumen, orderBy("nama"));
+  const refDokumen = collection(db, "Penjual");
+  const kueri = query(refDokumen, orderBy("Nama"));
   const cuplikanKueri = await getDocs(kueri);
 
 let hasil = [];
   cuplikanKueri.forEach((dok) => {
     hasil.push({
       id: dok.id,
-      nama: dok.data().nama,
-      harga: dok.data().harga,
-      stok: dok.data().stok,
+      Nama: dok.data().Nama,
+      Alamat: dok.data().Alamat,
+      Notlpon: dok.data().Notlpon,
     });
   });
   

@@ -33,20 +33,20 @@
   <a href="form-produk.html">Tambah penjual</a>
 
   <script type="module">
-    import { ambilDaftarProduk, formatAngka, hapusProduk } from './main.js';
+    import { ambilDaftarPenjual, formatAngka, hapusProduk } from './main.js';
 
     $(document).ready(async function() {
-      let elemenDaftar = $("#daftar-produk > tbody");
-      let daftarProduk = await ambilDaftarProduk();
+      let elemenDaftar = $("#daftar-penjual > tbody");
+      let daftarPenjual = await ambilDaftarPenjual();
       let nomor = 1;
       
-      daftarProduk.forEach((data) => {
+      daftarPenjual.forEach((data) => {
         elemenDaftar.append(
           '<tr>' +
           '<th>' + nomor + '</th>' +
-          '<td>' + data.nama + '</td>' +
-          '<td>' + formatAngka(data.harga) + '</td>' +
-          '<td>' + data.stok + '</td>' +
+          '<td>' + data.Nama + '</td>' +
+          '<td>' + data.Alamat + '</td>' +
+          '<td>' + data.Notlpon + '</td>' +
           '<td>' + '<button class="btn btn-danger tombol-hapus" data="' + data.id + '">Hapus</button>' + 
           '<img src="loader.gif" style="width: 1em; display: none" id="' + data.id + '">' +
           '</td>' +
@@ -60,7 +60,7 @@
       $('.tombol-hapus').click(async function() {
         $(this).attr('disabled', 'disabled');
         $('#' + $(this).attr('data')).show();
-        await hapusProduk($(this).attr('data'));
+        await hapusPenjual($(this).attr('data'));
         location.reload();
       });
 
